@@ -1,6 +1,6 @@
 # CPPND: Memory Management Chatbot
 
-This is the project for the third course in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213): Memory Management.
+Completed submission for the Memory Management Chatbot Project in the Memory Management Programming Course of the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213).
 
 <img src="images/chatbot_demo.gif"/>
 
