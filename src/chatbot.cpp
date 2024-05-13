@@ -32,7 +32,7 @@ ChatBot::ChatBot(std::string filename)
 
 // constructor that COPIES the allocated memory
 ChatBot::ChatBot(const ChatBot &other) {
-    std::cout << "Chatbot Move Constructor" << std::endl;
+    std::cout << "Chatbot Copy Constructor" << std::endl;
     if (&other != this) {
         _image = new wxBitmap(*other._image);
         _currentNode = other._currentNode;
@@ -43,7 +43,7 @@ ChatBot::ChatBot(const ChatBot &other) {
 
 // constructor that MOVES the allocated memory
 ChatBot::ChatBot(ChatBot &&other) {
-    std::cout << "Chatbot Copy Constructor" << std::endl;
+    std::cout << "Chatbot Move Constructor" << std::endl;
     if (&other != this) {
         _image = other._image;
         _currentNode = other._currentNode;
