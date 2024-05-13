@@ -69,7 +69,7 @@ ChatBot::~ChatBot()
 }
 
 ChatBot& ChatBot::operator=(const ChatBot &other) {
-    std::cout << "ChatBot copy assignment operator" << std::endl;
+    std::cout << "ChatBot Copy assignment operator" << std::endl;
     if (&other == this) {
         return *this;
     }
@@ -82,7 +82,7 @@ ChatBot& ChatBot::operator=(const ChatBot &other) {
 }
 
 ChatBot& ChatBot::operator=(ChatBot &&other) {
-    std::cout << "ChatBot move assignment operator" << std::endl;
+    std::cout << "ChatBot Move assignment operator" << std::endl;
     if (&other == this) {
         return *this;
     }
