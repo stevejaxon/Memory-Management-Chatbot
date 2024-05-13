@@ -195,13 +195,13 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
     }
 
     // Create instance of the chatbot on the Stack
-    auto chatbot = std::make_unique<ChatBot>("../images/chatbot.png");
+    ChatBot chatbot("../images/chatbot.png");
     // Add pointer to chatlogic so that chatbot answers can be passed on to the GUI
-    (*chatbot).SetChatLogicHandle(this);
-    (*chatbot).SetRootNode(rootNode);
-    SetChatbotHandle(chatbot.get());
+    chatbot.SetChatLogicHandle(this);
+    chatbot.SetRootNode(rootNode);
+    SetChatbotHandle(&chatbot);
     // Move the chatbot to graph root node
-    rootNode->MoveChatbotHere(std::move(chatbot));
+    rootNode->MoveChatbotHere(chatbot);
     
     ////
     //// EOF STUDENT CODE
