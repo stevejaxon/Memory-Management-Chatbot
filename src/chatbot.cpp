@@ -30,6 +30,34 @@ ChatBot::ChatBot(std::string filename)
     _image = new wxBitmap(filename, wxBITMAP_TYPE_PNG);
 }
 
+// constructor that COPIES the allocated memory
+ChatBot::ChatBot(const ChatBot &other) {
+    std::cout << "Chatbot Copy Constructor" << std::endl;
+    if (&other != this) {
+        _image = new wxBitmap(*other._image);
+        _currentNode = other._currentNode;
+        _chatLogic = other._chatLogic;
+        _chatLogic->SetChatbotHandle(this);
+        _rootNode = other._rootNode;
+    }
+}
+
+// constructor that MOVES the allocated memory
+ChatBot::ChatBot(ChatBot &&other) {
+    std::cout << "Chatbot Move Constructor" << std::endl;
+    if (&other != this) {
+        _image = other._image;
+        _currentNode = other._currentNode;
+        _chatLogic = other._chatLogic;
+        _chatLogic->SetChatbotHandle(this);
+        _rootNode = other._rootNode;
+        other._image = NULL;
+        other._currentNode = nullptr;
+        other._chatLogic = nullptr;
+        other._rootNode = nullptr;
+    }
+}
+
 ChatBot::~ChatBot()
 {
     std::cout << "ChatBot Destructor" << std::endl;
@@ -42,11 +70,37 @@ ChatBot::~ChatBot()
     }
 }
 
-//// STUDENT CODE
-////
+ChatBot& ChatBot::operator=(const ChatBot &other) {
+    std::cout << "ChatBot Copy assignment operator" << std::endl;
+    if (&other == this) {
+        return *this;
+    }
 
-////
-//// EOF STUDENT CODE
+    _image = new wxBitmap(*other._image);
+    _currentNode = other._currentNode;
+    _chatLogic = other._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
+    _rootNode = other._rootNode;
+    return *this;
+}
+
+ChatBot& ChatBot::operator=(ChatBot &&other) {
+    std::cout << "ChatBot Move assignment operator" << std::endl;
+    if (&other == this) {
+        return *this;
+    }
+
+    _image = other._image;
+    _currentNode = other._currentNode;
+    _chatLogic = other._chatLogic;
+    _rootNode = other._rootNode;
+    other._image = NULL;
+    other._currentNode = nullptr;
+    other._chatLogic = nullptr;
+    _chatLogic->SetChatbotHandle(this);
+    other._rootNode = nullptr;
+    return *this;
+}
 
 void ChatBot::ReceiveMessageFromUser(std::string message)
 {
